@@ -1,16 +1,18 @@
 body {
   background-color: white;
-  max-width: 1440px;
+
   max-height: 2476px;
   background-position: top center;
   background-repeat: no-repeat;
+  width: 100%;
+  margin: auto;
 }
 
 nav {
   width: 1180px;
   display: flex;
   justify-content: space-between;
-
+  margin: 0 auto;
 }
 }
   img {
@@ -36,7 +38,7 @@ nav {
   min-width: 800px;
   display: flex;
   flex-wrap: nowrap;
-
+  margin: auto;
 }
 
  .user-navigation {
