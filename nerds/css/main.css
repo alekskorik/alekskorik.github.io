@@ -1,4 +1,11 @@
+@font-face {
+ font-family: Roboto;
+ src: url(../fonts/web/roboto.woff2) format(woff2)
+ url(../fonts/web/roboto.woff) format(woff);
+}
+
 body {
+  font-family: Roboto;
   background-color: white;
   max-height: 2476px;
   background-position: top center;
@@ -6,12 +13,15 @@ body {
   width: 100%;
   margin: auto;
 }
-
+p {
+ font-family: Roboto ;
+}
+a{
+text-decoration: none;
+}
 nav {
-  width: 1180px;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
-  /* margin: 0 auto; */
 }
 }
   img {
@@ -53,20 +63,14 @@ nav {
   color: #ffffff;
   vertical-align: top;
   text-decoration: none;
-  /* text-shadow: 0 2px 5px rgba(160, 32, 11, 0.76); */
-
   background: #fb565a;
-  /* background: linear-gradient(to bottom, #fb565a 0%, #e74a35 100%); */
-  /* box-shadow: 0 2px 2px rgba(172, 16, 0, 0.64); */
   border: none;
 
   cursor: pointer;
 }
 .main-header{
   background-color: #eeeeee;
-  width: 100%;
   min-height: 130px;
-  justify-content: space-between;
 }
 .main-header-logo {
   width: 160px;
@@ -75,12 +79,11 @@ nav {
 .site-navigation {
   min-height: 15px;
   display: flex;
-  flex-wrap: nowrap;
-  margin: auto;
+  padding-left: 200px;
 }
 
  .user-navigation {
-    width: 120px;
+   padding-left: 240px;
 }
 .site-navigation a,
 .user-navigation a {
@@ -109,8 +112,6 @@ nav {
 .advantages{
   background-color: #eeeeee;
   margin-bottom: 50px;
-
-  justify-content: space-between;
 }
 .advantages-item {
   display: flex;
@@ -119,6 +120,25 @@ nav {
 .advantages-heading{
   font-size: 50px;
 
+}
+.advantages-button {
+  display: inline-block;
+  padding-right: 47px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 45px;
+  margin-top: 40px;
+
+  font-weight: 600;
+  font-size: 20px;
+  text-align: center;
+  color: #ffffff;
+  vertical-align: top;
+  text-decoration: none;
+  background: #fb565a;
+  border: none;
+
+  cursor: pointer;
 }
 .products {
   margin-bottom: 85px;
@@ -140,10 +160,8 @@ nav {
 .index-columns{
   display: flex;
   justify-content: space-between;
-  /* padding: 80px; */
   width: 1180px;
   padding-left: 140px;
-  /* padding-right: 140px; */
 }
 .description {
   width: 660px;
