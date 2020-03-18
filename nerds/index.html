@@ -24,27 +24,32 @@
        </ul>
 </nav>
   </header>
-<main class="container">
-  <section class="slider">
-     <ul class="advantages">
-
-
-
-    <li class="advantages-item big-padding slide" id="slide1">
+  <input class="visually-hidden" type="radio" id="product-1" name="toggle" checked>
+    <input class="visually-hidden" type="radio" id="product-2" name="toggle">
+    <input class="visually-hidden" type="radio" id="product-3" name="toggle">
+<div class="site-wrapper">
+  <section class="slider big-padding">
+    <div class="slider-controls">
+         <label for="product-1">Первый</label>
+         <label for="product-2">Второй</label>
+         <label for="product-3">Третий</label>
+       </div>
+     <ul class="slider-list">
+    <li class="advantages-item slide" id="slide1">
     <div><h2 class="advantages-heading">Долго, дорого,<br> скурпулезно.</h2>
     <p class="advantages-text">Математически выверенный дизайн<br>
 для вашего сайта или мобильного приложения. </p>
 <a class="advantages-button">Узнать больше</a> </div>
 <img src="nerds.png/nerds-index-slide1.png" alt="">
 </li>
-    <li class="advantages-item big-padding slide" id="slide2">
+    <li class="advantages-item slide" id="slide2">
       <div><h2 class="advantages-heading">Любим математику<br> как никто другой</h2>
       <p class="advantages-text">Никакого креатива, только математические формулы <br>
 для расчета идеальных пропорций.</p>
   <a class="advantages-button">Узнать больше</a> </div>
   <img src="nerds.png/nerds-index-slide2.png" alt="">
     </li>
-    <li class="advantages-item big-padding slide" id="slide3">
+    <li class="advantages-item slide" id="slide3">
       <div><h2 class="advantages-heading">Только ночь<br> только хардкор</h2>
       <p class="advantages-text">Работать днем, как все? Мы против этого.<br>
 Ближе к полуночи работа только начинается.</p>
@@ -53,6 +58,7 @@
     </li>
   </ul>
 </section>
+</div>
   <section class="products">
   <ul class="products-list big-padding">
     <li class="products-item">
