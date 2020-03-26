@@ -113,10 +113,10 @@
              </section>
   </div>
   <div class="sponsors">
-    <a href="#"><img src="nerds.png/logo-1.png" alt=""></a>
-    <a href="#"><img src="nerds.png/logo-2.png" alt=""></a>
-    <a href="#"><img src="nerds.png/logo-3.png" alt=""></a>
-    <a href="#"><img src="nerds.png/logo-4.png" alt=""></a>
+    <a class="sponsor-logo" href="#"><img class="sponsor-logo" src="nerds.png/logo-1.png" alt=""></a>
+    <a class="sponsor-logo" href="#"><img class="sponsor-logo" src="nerds.png/logo-2.png" alt=""></a>
+    <a class="sponsor-logo" href="#"><img class="sponsor-logo" src="nerds.png/logo-3.png" alt=""></a>
+    <a class="sponsor-logo" href="#"><img class="sponsor-logo" src="nerds.png/logo-4.png" alt=""></a>
   </div>
 </main>
 <footer class="main-footer">
@@ -185,5 +185,45 @@
 </form>
 <button class="modal-close" type="button"><img src="svg-nerds/close-cross.svg" alt="Закрыть"></button>
 </section>
+
+
+
+
+
+
+
+<script type="text/javascript">
+var link = document.querySelector(".letter-link");
+
+var popup = document.querySelector(".modal");
+
+var close = popup.querySelector(".modal-close");
+
+link.addEventListener("click", function (evt) {
+evt.preventDefault();
+popup.classList.add("modal-show");
+});
+
+close.addEventListener("click", function (evt) {
+evt.preventDefault();
+popup.classList.remove("modal-show");
+});
+
+window.addEventListener("keydown", function (evt) {
+if (evt.keyCode === 27) {
+evt.preventDefault();
+if (popup.classList.contains("modal-show")) {
+  popup.classList.remove("modal-show");
+}
+}
+});
+</script>
+
+
+
+
+
+
+
 </body>
 </html>

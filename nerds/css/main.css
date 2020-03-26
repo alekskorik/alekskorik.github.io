@@ -204,6 +204,13 @@ nav {
 
   cursor: pointer;
 }
+.advantages-button:hover {
+background-color: #e74246;
+}
+.advantages-button:active {
+  color: #e37376;
+  background-color: #d7373b;
+}
 .products {
   margin-bottom: 85px;
   min-height: 350px;
@@ -238,6 +245,13 @@ nav {
 
   cursor: pointer;
 }
+.red-button:hover {
+  background-color: #e74246;
+}
+.red-button:active {
+  color: #e37376;
+  background-color: #d7373b;
+}
 .green-button {
   display: inline-block;
   padding-right: 40px;
@@ -256,6 +270,13 @@ nav {
   border: none;
 
   cursor: pointer;
+}
+.green-button:hover {
+  background-color: #00bc6c;
+}
+.green-button:active {
+  color: #4dc491;
+  background-color: #00aa62;
 }
 .yellow-button {
   display: inline-block;
@@ -276,7 +297,13 @@ nav {
 
   cursor: pointer;
 }
-
+.yellow-button:hover {
+  background-color: #eab534;
+}
+.yellow-button:active {
+  color: #edc265;
+  background-color: #e5a722;
+}
 .index-columns{
   display: flex;
   justify-content: space-between;
@@ -298,12 +325,22 @@ nav {
   list-style: none;
 }
 .sponsors{
+  margin-bottom: 80px;
   margin-left: 140px;
   width: 1160px;
   display: flex;
   justify-content: space-between;
   border-top: 2px solid #eeeeee;
   border-bottom: 2px solid #eeeeee;
+}
+.sponsor-logo{
+opacity: 0.5;
+}
+.sponsor-logo:hover {
+opacity: 1;
+}
+.sponsor-logo:active {
+  opacity: 0.3;
 }
 .main-footer{
   margin-top: 80px;
@@ -325,6 +362,13 @@ nav {
 }
 .map {
   position: relative;
+}
+.letter-link:hover {
+  background-color: #e74246;
+}
+.letter-link:active {
+  color: #e37376;
+  background-color: #d7373b;
 }
 .info {
   width: 320px;
@@ -559,8 +603,16 @@ fieldset{
   text-transform: uppercase;
   font-weight: bold;
 
+  cursor: pointer;
   background-color: #eeeeee;
   border: none;
+}
+.filter-button:hover {
+background-color: #dfdfdf;
+}
+.filter-button:active{
+  color: #a6a6a6;
+  background-color: #d5d5d5;
 }
 .catalog {
   width: 760px;
@@ -762,6 +814,13 @@ margin-bottom: 33px
   top: 90px;
   right: 90px;
   cursor: pointer;
+  opacity: 0.4;
+}
+.modal-close:hover {
+  opacity: 1;
+}
+.modal-close {
+  opacity: 0.1;
 }
 .modal h2 {
   margin: 0;
@@ -825,4 +884,11 @@ margin-bottom: 33px
   border: none;
 
   cursor: pointer;
+}
+.modal-button:hover {
+  background-color: #e74246;
+}
+.modal-button:active {
+  color: #e37376;
+  background-color: #d7373b;
 }
