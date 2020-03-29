@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="css/main.css">
-  <!-- <script src="js/script.js"></script> -->
   <title>Дизайн-студия "Нёрдс"</title>
 </head>
 <body>
@@ -17,7 +16,7 @@
       <ul class="site-navigation">
         <li><a href="studio.html">Студия</a></li>
         <li><a href="clients.html">Клиенты</a></li>
-        <li><a href="catalog.html">Магазин</a></li>
+        <li><a class="catalog-active" href="catalog.html">Магазин</a></li>
         <li><a href="contacts.html">Контакты</a></li>
      </ul>
         <ul class="user-navigation">
@@ -54,17 +53,17 @@
          <li class="filter-option">
            <input class="visually-hidden filter-input filter-input-radio" type="radio" name="grid"
            value="adaptive" id="filter-adaptive" checked>
-           <label for="filter-shave">Адаптивная</label>
+           <label for="filter-adaptive">Адаптивная</label>
          </li>
          <li class="filter-option">
            <input class="visually-hidden filter-input filter-input-radio" type="radio" name="grid"
            value="fixed" id="filter-fixed">
-           <label for="filter-care">Фиксированная</label>
+           <label for="filter-fixed">Фиксированная</label>
          </li>
          <li class="filter-option">
            <input class="visually-hidden filter-input filter-input-radio" type="radio" name="grid"
            value="rubber" id="filter-rubber">
-           <label for="filter-accessories">Резиновая</label>
+           <label for="filter-rubber">Резиновая</label>
          </li>
        </ul>
      </fieldset>
@@ -102,18 +101,18 @@
             <legend class="sorting-legend">СОРТИРОВАТЬ:</legend>
               <ul class="sorting-filtres">
               <li class="filter-sorting"><input class="visually-hidden filter-sorting filter-input-radio" type="radio" name="sorting"
-              value="cost" id="filter-cost"checked>ПО ЦЕНЕ</li>
+              value="cost" id="filter-price" checked><label for="filter-price">ПО ЦЕНЕ</label></li>
               <li class="filter-sorting"><input class="visually-hidden filter-sorting filter-input-radio" type="radio" name="sorting"
-              value="type" id="filter-type">ПО ТИПУ</li>
+              value="type" id="filter-type"><label for="filter-type">ПО ТИПУ</label></li>
               <li class="filter-sorting"><input class="visually-hidden filter-sorting filter-input-radio" type="radio" name="sorting"
-              value="name" id="filter-name">ПО НАЗВАНИЮ</li>
+              value="name" id="filter-name"><label for="filter-name">ПО НАЗВАНИЮ</label></li>
             </ul>
             <form class="filter" method="get" action="https://echo.htmlacademy.ru">
               <ul class="direction">
               <li><input class="visually-hidden filter-sorting filter-input-radio" type="radio" name="direction"
-              value="down" id="filter-direction-down" checked><button class="sorting-button"><img src="svg-nerds/icon-down-dir.svg" alt=""></button></li>
+              value="down" id="filter-direction-down"  checked><button class="sorting-button"><img src="svg-nerds/icon-down-dir.svg" alt=""></button></li>
               <li><input class="visually-hidden filter-sorting filter-input-radio" type="radio" name="direction"
-              value="up" id="filter-direction-up" checked><button class="sorting-button"><img src="svg-nerds/icon-up-dir.svg" alt=""></button></li>
+              value="up" id="filter-direction-up"><button class="sorting-button"><img src="svg-nerds/icon-up-dir.svg" alt=""></button></li>
             </ul>
           </div>
         </form>
@@ -124,7 +123,7 @@
          <img src="nerds.jpg/img-sedona.jpg" alt="Шаблон Cедона">
      </a>
      <div class="specification">
-      <h3 class="specification-heading">SEDONA</h3>
+      <a class="specification-heading" href="#">SEDONA</a>
        <p>Информационный сайт <br>
             для туристов</p>
       <a class="catalog-button" href="#">9 900 РУБ.</a>
@@ -136,7 +135,7 @@
          <img src="nerds.jpg/img-pink.jpg" alt="Шаблон Пинк">
        </a>
        <div class="specification">
-        <h3 class="specification-heading">PINK APP</h3>
+        <a class="specification-heading" href="#">PINK APP</a>
          <p>Продуктовый лендинг <br>
        приложения для iOS и Android</p>
   <a class="catalog-button" href="#">9 900 РУБ.</a>
@@ -148,7 +147,7 @@
     <img src="nerds.jpg/img-barbershop.jpg" alt="Шаблон Барбершоп">
    </a>
    <div class="specification">
-    <h3 class="specification-heading">BARBERSHOP</h3>
+    <a class="specification-heading" href="#">BARBERSHOP</a>
      <p>Сайт салон красоты. <br>
           Для мужчин, да.</p>
     <a class="catalog-button" href="#">9 900 РУБ.</a>
@@ -160,7 +159,7 @@
     <img src="nerds.jpg/img-mishka.jpg" alt="Шаблон Мишка">
    </a>
    <div class="specification">
-    <h3 class="specification-heading">MISHKA</h3>
+    <a class="specification-heading" href="#">MISHKA</a>
      <p>Интернет-магазин <br>
         вязанных игрушек</p>
 <a class="catalog-button" href="#">9 900 РУБ.</a>
@@ -172,7 +171,7 @@
     <img src="nerds.jpg/img-aplus.jpg" alt="Шаблон А-Плюс">
    </a>
    <div class="specification">
-    <h3 class="specification-heading">A PLUS</h3>
+    <a class="specification-heading" href="#">A PLUS</a>
      <p>Лендинг курсы для повышения <br>
           квалификации</p>
     <a class="catalog-button" href="#">9 900 РУБ.</a>
@@ -184,7 +183,7 @@
     <img src="nerds.jpg/img-kvast.jpg" alt="Шаблон Кваст">
    </a>
    <div class="specification">
-    <h3 class="specification-heading">КВАСТ</h3>
+    <a class="specification-heading" href="#">КВАСТ</a>
      <p>Промо-сайт производителя <br>
           крафтового кваса</p>
     <a class="catalog-button" href="#">9 900 РУБ.</a>
@@ -250,16 +249,16 @@
     <div class="modal-info">
     <p class="username">
       <label class="modal-label" for="username">Ваше имя:</label>
-      <input class="modal-label" id="username" type="text" name="username" placeholder="Имя Фамилия">
+      <input class="modal-input" id="username" type="text" name="username" placeholder="Имя Фамилия">
     </p>
     <p class="email">
       <label class="modal-label" for="user-email">Электронный адрес:</label>
-      <input class="" id="user-email" type="text" name="email" placeholder="email@example.com">
+      <input class="modal-input" id="user-email" type="text" name="email" placeholder="email@example.com">
     </p>
   </div>
     <p>
       <label class="" for="letter">Текст письма:</label>
-      <input class="" id="letter" type="text" name="letter" placeholder="В свободной форме">
+      <textarea class="modal-input" name="letter" placeholder="В свободной форме"></textarea>
     </p>
     <button class="modal-button" type="submit">Отправить</button>
   </form>
@@ -276,9 +275,13 @@
 var link = document.querySelector(".letter-link");
 
 var popup = document.querySelector(".modal");
-
 var close = popup.querySelector(".modal-close");
 
+var form = popup.querySelector("form");
+// var login = popup.querySelector("[name=username]");
+// var email = popup.querySelector("[name=email]");
+// var letter = popup.querySelector("[name=letter]");
+var input = popup.querySelector(".modal-input")
 link.addEventListener("click", function (evt) {
   evt.preventDefault();
   popup.classList.add("modal-show");
@@ -295,6 +298,13 @@ window.addEventListener("keydown", function (evt) {
     if (popup.classList.contains("modal-show")) {
       popup.classList.remove("modal-show");
     }
+  }
+});
+form.addEventListener("submit", function (evt) {
+  if (!username.value || !email.value || !letter.value) {
+    evt.preventDefault();
+    input.classList.add("modal-error");
+    console.log("Нужно ввести Имя, электронную почту и текст письма");
   }
 });
 </script>
