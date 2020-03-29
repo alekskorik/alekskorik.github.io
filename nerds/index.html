@@ -170,16 +170,16 @@
 <div class="modal-info">
 <p class="username">
   <label class="modal-label" for="username">Ваше имя:</label>
-  <input class="modal-label" id="username" type="text" name="username" placeholder="Имя Фамилия">
+  <input class="modal-input" id="username" type="text" name="username" placeholder="Имя Фамилия" required>
 </p>
 <p class="email">
   <label class="modal-label" for="user-email">Электронный адрес:</label>
-  <input class="" id="user-email" type="text" name="email" placeholder="email@example.com">
+  <input class="modal-input" id="user-email" type="text" name="email" placeholder="email@example.com" required>
 </p>
 </div>
 <p>
   <label class="" for="letter">Текст письма:</label>
-    <textarea class="letter-text" name="letter" placeholder="В свободной форме"></textarea>
+  <textarea class="modal-input" name="letter" placeholder="В свободной форме" required></textarea>
 </p>
 <button class="modal-button" type="submit">Отправить</button>
 </form>
@@ -196,9 +196,13 @@
 var link = document.querySelector(".letter-link");
 
 var popup = document.querySelector(".modal");
-
 var close = popup.querySelector(".modal-close");
 
+var form = popup.querySelector("form");
+var login = popup.querySelector("[name=username]");
+var email = popup.querySelector("[name=email]");
+var letter = popup.querySelector("[name=letter]");
+var inputs = popup.querySelectorAll(".modal-input")
 link.addEventListener("click", function (evt) {
 evt.preventDefault();
 popup.classList.add("modal-show");
@@ -215,6 +219,13 @@ evt.preventDefault();
 if (popup.classList.contains("modal-show")) {
   popup.classList.remove("modal-show");
 }
+}
+});
+form.addEventListener("submit", function (evt) {
+if (!username.value || !email.value || !letter.value) {
+evt.preventDefault();
+for (var i=0;i<inputs.length;i++){inputs[i].classlist.add("modal-error");}
+console.log("Нужно ввести Имя, электронную почту и текст письма");
 }
 });
 </script>

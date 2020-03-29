@@ -249,16 +249,16 @@
     <div class="modal-info">
     <p class="username">
       <label class="modal-label" for="username">Ваше имя:</label>
-      <input class="modal-input" id="username" type="text" name="username" placeholder="Имя Фамилия">
+      <input class="modal-input" id="username" type="text" name="username" placeholder="Имя Фамилия" required>
     </p>
     <p class="email">
       <label class="modal-label" for="user-email">Электронный адрес:</label>
-      <input class="modal-input" id="user-email" type="text" name="email" placeholder="email@example.com">
+      <input class="modal-input" id="user-email" type="text" name="email" placeholder="email@example.com" required>
     </p>
   </div>
     <p>
       <label class="" for="letter">Текст письма:</label>
-      <textarea class="modal-input" name="letter" placeholder="В свободной форме"></textarea>
+      <textarea class="modal-input" name="letter" placeholder="В свободной форме" required></textarea>
     </p>
     <button class="modal-button" type="submit">Отправить</button>
   </form>
@@ -278,10 +278,10 @@ var popup = document.querySelector(".modal");
 var close = popup.querySelector(".modal-close");
 
 var form = popup.querySelector("form");
-// var login = popup.querySelector("[name=username]");
-// var email = popup.querySelector("[name=email]");
-// var letter = popup.querySelector("[name=letter]");
-var input = popup.querySelector(".modal-input")
+var login = popup.querySelector("[name=username]");
+var email = popup.querySelector("[name=email]");
+var letter = popup.querySelector("[name=letter]");
+var inputs = popup.querySelectorAll(".modal-input")
 link.addEventListener("click", function (evt) {
   evt.preventDefault();
   popup.classList.add("modal-show");
@@ -303,7 +303,7 @@ window.addEventListener("keydown", function (evt) {
 form.addEventListener("submit", function (evt) {
   if (!username.value || !email.value || !letter.value) {
     evt.preventDefault();
-    input.classList.add("modal-error");
+    for (var i=0;i<inputs.length;i++){inputs[i].classlist.add("modal-error");}
     console.log("Нужно ввести Имя, электронную почту и текст письма");
   }
 });

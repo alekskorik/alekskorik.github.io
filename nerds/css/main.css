@@ -991,6 +991,11 @@ textarea:focus::placeholder {
   color: #e37376;
   background-color: #d7373b;
 }
-.modal-error {
+/* .letter-form input.modal-error {
   border: 2px solid #e74246;
+} */
+ .letter-form input[name="username"]:invalid,
+ .letter-form input[name="email"]:invalid,
+ textarea:invalid {
+  border-color: #e74246;
 }
