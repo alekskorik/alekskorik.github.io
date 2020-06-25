@@ -35,6 +35,10 @@ nav {
  ul {
   list-style: none;
 }
+iframe {
+  border: 0px;
+  width: 100%;
+}
 .big-padding{
   padding-left: 140px;
 }
@@ -438,9 +442,6 @@ opacity: 1;
 }
 .info-content {
   margin-top: 55px;
-}
-iframe{
-  width: 100%;
 }
 .social-button{
   display: flex;
