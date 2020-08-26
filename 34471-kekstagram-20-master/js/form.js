@@ -171,8 +171,14 @@
       var successButton = document.querySelector('.success__button');
       successButton.addEventListener('click', function functionName() {
         console.log(main.children[3]);
-        main.removeChild(main.children[3];
+        main.removeChild(main.children[3]);
         console.log(successButton);
+      });
+      body.addEventListener('click', function removeSuccessMessage(e) {
+        if (!e.target.classList.contains('success__inner')) {
+          main.removeChild(main.children[3]);
+          body.removeEventListener('click', removeSuccessMessage, false);
+        }
       });
     });
     evt.preventDefault();
