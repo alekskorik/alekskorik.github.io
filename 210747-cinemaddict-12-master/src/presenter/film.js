@@ -15,6 +15,7 @@ export default class Film {
   }
   init(container, film) {
     this._film = film;
+    console.log(this._film);
     this._container = container;
     const prevfilmComponent = this._filmComponent;
     const prevfilmPopUpComponent = this._filmPopUpComponent;
@@ -25,6 +26,7 @@ export default class Film {
     this._filmComponent.setWatchedClickHandler(this._handleWatchedClick);
     this._filmComponent.setFavoriteClickHandler(this._handleFavoriteClick);
     this._filmComponent.setPopUpClickHandler(() => {
+      // this._handleWatchListClick();
       this._showPopUp();
     });
     this._filmPopUpComponent.setPopUpRemoveClickHandler(() => {
@@ -69,6 +71,7 @@ export default class Film {
   //   }
   // }
   _handleWatchListClick() {
+    // console.log(`ss`);
     this._changeData(
         Object.assign(
             {},
@@ -80,26 +83,30 @@ export default class Film {
     );
   }
   _handleWatchedClick() {
-    this._changeData(
-        Object.assign(
-            {},
-            this._film,
-            {
-              isWatched: !this._film.isWatched
-            }
-        )
-    );
+    console.log(this._film);
+    // this._changeData(
+    //     Object.assign(
+    //         {},
+    //         this._film,
+    //         {
+    //           isWatched: !this._film.isWatched
+    //         }
+    //     )
+    // );
   }
   _handleFavoriteClick() {
-    this._changeData(
-        Object.assign(
-            {},
-            this._film,
-            {
-              isFavorite: !this._film.isFavorite
-            }
-        )
-    );
+    console.log(`aa`);
+    console.log(this._film.isFavorite);
+
+    // this._changeData(
+    //     Object.assign(
+    //         {},
+    //         this._film,
+    //         {
+    //           isFavorite: !this._film.isFavorite
+    //         }
+    //     )
+    // );
   }
 
 

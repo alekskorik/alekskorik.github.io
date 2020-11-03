@@ -38,7 +38,7 @@ export default class MovieList {
   _renderFilms() {
     const firstFilms = this._films.slice(0, STARTING_FILMS_COUNT);
     firstFilms.forEach((card) => {
-      console.log(card);
+      // console.log(card);
       this._renderFilmCard($filmsContainer, card);
     });
   }
@@ -71,7 +71,7 @@ export default class MovieList {
   _handleFilmChange(updatedFilm) {
     this._films = updateItem(this._films, updatedFilm);
     this._sourceFilms = updateItem(this._sourceFilms, updatedFilm);
-    this._taskPresenter[updatedFilm.id].init(updatedFilm);
+    this._filmPresenter[updatedFilm.id].init(updatedFilm);
   }
   _clearFilmList() {
     Object
