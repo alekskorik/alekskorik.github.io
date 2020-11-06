@@ -72,6 +72,7 @@ export default class MovieList {
     this._films = updateItem(this._films, updatedFilm);
     this._sourceFilms = updateItem(this._sourceFilms, updatedFilm);
     this._filmPresenter[updatedFilm.id].init(updatedFilm);
+    console.log(`updatedFilm`);
   }
   _clearFilmList() {
     Object
