@@ -519,6 +519,7 @@ class Film {
   }
   init(container, film) {
     this._film = film;
+    console.log(this._film);
     this._container = container;
     const prevfilmComponent = this._filmComponent;
     const prevfilmPopUpComponent = this._filmPopUpComponent;
@@ -529,6 +530,7 @@ class Film {
     this._filmComponent.setWatchedClickHandler(this._handleWatchedClick);
     this._filmComponent.setFavoriteClickHandler(this._handleFavoriteClick);
     this._filmComponent.setPopUpClickHandler(() => {
+      // this._handleWatchListClick();
       this._showPopUp();
     });
     this._filmPopUpComponent.setPopUpRemoveClickHandler(() => {
@@ -573,6 +575,7 @@ class Film {
   //   }
   // }
   _handleWatchListClick() {
+    // console.log(`ss`);
     this._changeData(
         Object.assign(
             {},
@@ -584,26 +587,30 @@ class Film {
     );
   }
   _handleWatchedClick() {
-    this._changeData(
-        Object.assign(
-            {},
-            this._film,
-            {
-              isWatched: !this._film.isWatched
-            }
-        )
-    );
+    console.log(this._film);
+    // this._changeData(
+    //     Object.assign(
+    //         {},
+    //         this._film,
+    //         {
+    //           isWatched: !this._film.isWatched
+    //         }
+    //     )
+    // );
   }
   _handleFavoriteClick() {
-    this._changeData(
-        Object.assign(
-            {},
-            this._film,
-            {
-              isFavorite: !this._film.isFavorite
-            }
-        )
-    );
+    console.log(`aa`);
+    console.log(this._film.isFavorite);
+
+    // this._changeData(
+    //     Object.assign(
+    //         {},
+    //         this._film,
+    //         {
+    //           isFavorite: !this._film.isFavorite
+    //         }
+    //     )
+    // );
   }
 
 
@@ -683,7 +690,7 @@ class MovieList {
   _renderFilms() {
     const firstFilms = this._films.slice(0, STARTING_FILMS_COUNT);
     firstFilms.forEach((card) => {
-      console.log(card);
+      // console.log(card);
       this._renderFilmCard($filmsContainer, card);
     });
   }
@@ -716,7 +723,8 @@ class MovieList {
   _handleFilmChange(updatedFilm) {
     this._films = Object(_utils_common_js__WEBPACK_IMPORTED_MODULE_4__["updateItem"])(this._films, updatedFilm);
     this._sourceFilms = Object(_utils_common_js__WEBPACK_IMPORTED_MODULE_4__["updateItem"])(this._sourceFilms, updatedFilm);
-    this._taskPresenter[updatedFilm.id].init(updatedFilm);
+    this._filmPresenter[updatedFilm.id].init(updatedFilm);
+    console.log(`updatedFilm`);
   }
   _clearFilmList() {
     Object
@@ -966,7 +974,7 @@ class FilmCard extends _abstract_js__WEBPACK_IMPORTED_MODULE_0__["default"] {
 
   _watchedClickHandler(evt) {
     evt.preventDefault();
-    // console.log(this.callback);
+    console.log(this.callback);
     this._callback.watchedClick();
   }
   _favoriteClickHandler(evt) {
