@@ -83,30 +83,30 @@ export default class Film {
     );
   }
   _handleWatchedClick() {
-    console.log(this._film);
-    // this._changeData(
-    //     Object.assign(
-    //         {},
-    //         this._film,
-    //         {
-    //           isWatched: !this._film.isWatched
-    //         }
-    //     )
-    // );
+    // console.log(this._film);
+    this._changeData(
+        Object.assign(
+            {},
+            this._film,
+            {
+              isWatched: !this._film.isWatched
+            }
+        )
+    );
   }
   _handleFavoriteClick() {
-    console.log(`aa`);
-    console.log(this._film.isFavorite);
+    // console.log(`aa`);
+    // console.log(this._film.isFavorite);
 
-    // this._changeData(
-    //     Object.assign(
-    //         {},
-    //         this._film,
-    //         {
-    //           isFavorite: !this._film.isFavorite
-    //         }
-    //     )
-    // );
+    this._changeData(
+        Object.assign(
+            {},
+            this._film,
+            {
+              isFavorite: !this._film.isFavorite
+            }
+        )
+    );
   }
 
 
