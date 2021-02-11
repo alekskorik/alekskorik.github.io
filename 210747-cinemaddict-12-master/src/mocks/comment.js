@@ -1,5 +1,5 @@
 
-import {getRandomInteger} from '../utils/common.js';
+import {getRandomInteger, generateDate} from '../utils/common.js';
 const generateComment = () => {
   const authors = [
     `John`,
@@ -39,7 +39,7 @@ const generateComment = () => {
     commentText: commentText[getRandomInteger(0, commentText.length - 1)],
     emoji: emoji[getRandomInteger(0, emoji.length - 1)],
     author: authors[getRandomInteger(0, authors.length - 1)],
-    date: `2019/12/31 23:59`
+    date: generateDate()
   };
 };
 

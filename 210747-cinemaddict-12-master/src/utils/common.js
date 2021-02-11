@@ -11,16 +11,29 @@ export const getRandomFloatInteger = (a = 0, b = 1) => {
 
   return (lower + Math.random() * (upper - lower)).toFixed(1);
 };
-export const updateItem = (items, update) => {
-  const index = items.findIndex((item) => item.id === update.id);
 
-  if (index === -1) {
-    return items;
-  }
+export const generateDate = () => {
+  const maxDaysGap = getRandomInteger(0, 365);
+  const daysGap = getRandomInteger(-maxDaysGap, maxDaysGap);
+  let currentDate = new Date();
+  currentDate.setHours(23, 59, 59, 999);
+  currentDate.setDate(currentDate.getDate() + daysGap);
+  currentDate = new Date(currentDate);
 
-  return [
-    ...items.slice(0, index),
-    update,
-    ...items.slice(index + 1)
-  ];
+  return currentDate;
 };
+
+// export const updateItem = (items, update) => {
+//   console.log(items);
+//   const index = items.findIndex((item) => item.id === update.id);
+//
+//   if (index === -1) {
+//     return items;
+//   }
+//
+//   return [
+//     ...items.slice(0, index),
+//     update,
+//     ...items.slice(index + 1)
+//   ];
+// };

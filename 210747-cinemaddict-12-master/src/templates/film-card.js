@@ -1,15 +1,17 @@
 import AbstractView from "./abstract.js";
+import {getFormattedRuntime} from '../utils/date';
 
 export const createFilmCardTemplate = (film) => {
   const MAX_DESCRIPTION_LENGTH = 139;
   const {title, rating, filmReleaseYear, filmDuration, genres, posterName, description, comments} = film;
   const stringifyedGenres = genres.join();
+  const formattedRuntime = getFormattedRuntime(filmDuration);
   return (`<article class="film-card">
       <h3 class="film-card__title">${title}</h3>
       <p class="film-card__rating">${rating}</p>
       <p class="film-card__info">
         <span class="film-card__year">${filmReleaseYear}</span>
-        <span class="film-card__duration">${filmDuration.hours + `h` + filmDuration.minutes + `m`}</span>
+        <span class="film-card__duration">${formattedRuntime}</span>
         <span class="film-card__genre">${stringifyedGenres}</span>
       </p>
       <img src="./images/posters/${posterName}" alt="" class="film-card__poster">
@@ -32,7 +34,7 @@ export default class FilmCard extends AbstractView {
     this._clickHandler = this._clickHandler.bind(this);
 
 
-    this._watchlistClickHandler = this._watchListClickHandler.bind(this);
+    this._watchlistClickHandler = this._watchlistClickHandler.bind(this);
     this._watchedClickHandler = this._watchedClickHandler.bind(this);
     this._favoriteClickHandler = this._favoriteClickHandler.bind(this);
   // this._handleWatchlistClick = this._handleWatchlistClick.bind(this);
@@ -55,9 +57,9 @@ export default class FilmCard extends AbstractView {
     this.getElement().querySelector(`.film-card__title`).addEventListener(`click`, this._clickHandler);
     this.getElement().querySelector(`.film-card__comments`).addEventListener(`click`, this._clickHandler);
   }
-  _watchListClickHandler(evt) {
+  _watchlistClickHandler(evt) {
     evt.preventDefault();
-    this._callback.watchListClick();
+    this._callback.watchlistClick();
   }
 
   _watchedClickHandler(evt) {
@@ -69,9 +71,9 @@ export default class FilmCard extends AbstractView {
     evt.preventDefault();
     this._callback.favoriteClick();
   }
-  setWatchListClickHandler(callback) {
-    this._callback.watchListClick = callback;
-    this.getElement().querySelector(`.film-card__controls-item--add-to-watchlist`).addEventListener(`click`, this._watchListClickHandler);
+  setWatchlistClickHandler(callback) {
+    this._callback.watchlistClick = callback;
+    this.getElement().querySelector(`.film-card__controls-item--add-to-watchlist`).addEventListener(`click`, this._watchlistClickHandler);
   }
   setWatchedClickHandler(callback) {
     this._callback.watchedClick = callback;

@@ -1,4 +1,4 @@
-import {getRandomInteger, getRandomFloatInteger} from '../utils/common.js';
+import {getRandomInteger, generateDate, getRandomFloatInteger} from '../utils/common.js';
 import {getComments} from './comment.js';
 const generateId = () => Date.now() + parseInt(Math.random() * 10000, 10);
 const generateTitle = () => {
@@ -63,12 +63,15 @@ const generateFilmReleaseYear = () => {
 };
 
 const generateFilmDuration = () => {
-  const hours = getRandomInteger(1, 3);
-  const minutes = getRandomInteger(1, 59);
-  return {
-    hours,
-    minutes
-  };
+  // const hours = getRandomInteger(1, 3);
+  // const minutes = getRandomInteger(1, 59);
+  // return {
+  //   hours,
+  //   minutes
+  // };
+  const MIN_FILM_DURATION = 10;
+  const MAX_FILM_DURATION = 200;
+  return getRandomInteger(MIN_FILM_DURATION, MAX_FILM_DURATION);
 };
 
 const generateGenres = () => {
@@ -161,9 +164,10 @@ export const generateFilmCard = () => {
     country: genereateCountry(),
     filmReleasefullDate: generateDateOfRelease(),
     censorAge: generateCensorAge(),
-    isFavorite: Boolean(getRandomInteger(0, 1)),
+    isInWatchlist: Boolean(getRandomInteger(0, 1)),
     isWatched: Boolean(getRandomInteger(0, 1)),
-    isInWatchList: Boolean(getRandomInteger(0, 1)),
-    comments: getComments(getRandomInteger(0, 5))
+    isFavorite: Boolean(getRandomInteger(0, 1)),
+    comments: getComments(getRandomInteger(0, 5)),
+    watchingDate: generateDate(),
   };
 };
