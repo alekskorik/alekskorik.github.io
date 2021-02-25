@@ -1,25 +1,20 @@
 import AbstractView from "./abstract.js";
 import {SortType} from '../utils/sort';
 
-const createFiltersTemplate = () => {
+const createSortTemplate = (currentSortType) => {
   return (`<ul class="sort">
-  <li><a href="#" class="sort__button sort__button--active" data-sort-type="${SortType.DEFAULT}">Sort by default</a></li>
-  <li><a href="#" class="sort__button" data-sort-type="${SortType.DATE}">Sort by date</a></li>
-  <li><a href="#" class="sort__button" data-sort-type="${SortType.RATING}">Sort by rating</a></li>
+  <li><a href="#" class="sort__button ${currentSortType === SortType.DEFAULT ? `sort__button--active` : ``}" data-sort-type="${SortType.DEFAULT}">Sort by default</a></li>
+  <li><a href="#" class="sort__button ${currentSortType === SortType.DATE ? `sort__button--active` : ``}" data-sort-type="${SortType.DATE}">Sort by date</a></li>
+  <li><a href="#" class="sort__button ${currentSortType === SortType.RATING ? `sort__button--active` : ``}" data-sort-type="${SortType.RATING}">Sort by rating</a></li>
     </ul>
     </div>
   `);
 };
 export default class Sorting extends AbstractView {
-  constructor() {
+  constructor(currentSortType) {
     super();
-
+    this._currentSortType = currentSortType;
     this._sortTypeChangeHandler = this._sortTypeChangeHandler.bind(this);
-  }
-  _changeSortButtonActiveState(evt) {
-    this.getElement().querySelectorAll(`.sort__button`)
-    .forEach((button) => button.classList.remove(`sort__button--active`));
-    evt.target.classList.add(`sort__button--active`);
   }
 
   _sortTypeChangeHandler(evt) {
@@ -29,7 +24,6 @@ export default class Sorting extends AbstractView {
 
     evt.preventDefault();
     this._callback.sortTypeChange(evt.target.dataset.sortType);
-    this._changeSortButtonActiveState(evt);
   }
 
   setSortTypeChangeHandler(callback) {
@@ -38,6 +32,6 @@ export default class Sorting extends AbstractView {
   }
 
   getTemplate() {
-    return createFiltersTemplate(this._filters);
+    return createSortTemplate(this._currentSortType);
   }
 }

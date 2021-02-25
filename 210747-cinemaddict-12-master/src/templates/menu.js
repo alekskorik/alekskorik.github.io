@@ -1,26 +1,76 @@
-// import {createElement} from "../utils/utils.js";
 import AbstractView from "./abstract.js";
+import {FilterType, MenuItem} from '../utils/const';
 
-const createMenuTemplate = (filters) => {
-  const {watchlist, watched, favorite} = filters;
-  return (`<div><nav class="main-navigation">
-      <a href="#all" class="main-navigation__item main-navigation__item--active">All movies</a>
-      <a href="#watchlist" class="main-navigation__item">Watchlist <span class="main-navigation__item-count">${watchlist.length}</span></a>
-      <a href="#history" class="main-navigation__item">History <span class="main-navigation__item-count">${watched.length}</span></a>
-      <a href="#favorites" class="main-navigation__item">Favorites <span class="main-navigation__item-count">${favorite.length}</span></a>
-      <a href="#stats" class="main-navigation__item main-navigation__item--additional">Stats</a>
-    </nav>
-    </div>
-  `);
+const createFilterItemTemplate = (filter, currentFilterType) => {
+  const {name, type, count} = filter;
+  const createFilterItemCountTemplate = () => `${name} <span class="main-navigation__item-count">${count}</span>`;
+
+  return (
+    `<a href="#${type}" data-filter-type="${type}" data-menu-item="${MenuItem.FILTER}" class="main-navigation__item ${type === currentFilterType ? `main-navigation__item--active` : ``}">
+      ${type === FilterType.ALL ? name : createFilterItemCountTemplate()}
+    </a>`
+  );
+};
+
+const createSiteMenuTemplate = (filters, currentFilterType, currentMenuItem) => {
+  const currentActiveItem = (currentMenuItem === MenuItem.FILTER) ? currentFilterType : currentMenuItem;
+  const filterItemsTemplate = filters
+    .map((filter) => createFilterItemTemplate(filter, currentActiveItem))
+    .join(``);
+
+  return (
+    `<nav class="main-navigation">
+      <div class="main-navigation__items">
+        ${filterItemsTemplate}
+      </div>
+      <a href="#stats" data-menu-item="${MenuItem.STATISTICS}" class="main-navigation__additional ${currentActiveItem === MenuItem.STATISTICS ? `main-navigation__item--active` : ``}">Stats</a>
+    </nav>`
+  );
 };
 export default class SiteMenu extends AbstractView {
-  constructor(filters) {
+  constructor(filters, currentFilterType, currentMenuItem) {
     super();
     this._filters = filters;
-    // this._element = null;
+    this._currentFilterType = currentFilterType;
+    this._currentMenuItem = currentMenuItem;
+    this._filterTypeClickHandler = this._filterTypeClickHandler.bind(this);
+    this._menuItemClickHandler = this._menuItemClickHandler.bind(this);
   }
 
   getTemplate() {
-    return createMenuTemplate(this._filters);
+    return createSiteMenuTemplate(this._filters, this._currentFilterType, this._currentMenuItem);
+  }
+
+  _filterTypeClickHandler(evt) {
+    let target = evt.target;
+    if (target.parentElement.tagName === `A`) {
+      target = evt.target.parentElement;
+    }
+
+    evt.preventDefault();
+    this._callback.filterClick(target.dataset.filterType);
+  }
+
+  setFilterTypeClickHandler(callback) {
+    this._callback.filterClick = callback;
+    this.getElement()
+    .querySelectorAll(`.main-navigation__item`)
+    .forEach((item) => item.addEventListener(`click`, this._filterTypeClickHandler));
+  }
+
+  _menuItemClickHandler(evt) {
+    let target = evt.target;
+    if (target.parentElement.tagName === `A`) {
+      target = evt.target.parentElement;
+    }
+    evt.preventDefault();
+    this._callback.menuClick(target.dataset.menuItem);
+  }
+
+  setMenuClickHandler(callback) {
+    this._callback.menuClick = callback;
+    this.getElement()
+    .querySelectorAll(`.main-navigation__item, .main-navigation__additional`)
+    .forEach((item) => item.addEventListener(`click`, this._menuItemClickHandler));
   }
 }

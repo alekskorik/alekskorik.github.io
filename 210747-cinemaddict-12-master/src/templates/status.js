@@ -1,25 +1,40 @@
-import {getStatus} from "../utils/get-status.js";
-import AbstractView from "./abstract.js";
+import AbstarctView from './abstract.js';
+import {getUserRank} from '../utils/user.js';
+const createUserRankTemplate = (filmsModel) => {
+  const watchedFilmsCount = [...filmsModel.getFilms()].filter((film) => film.isWatched).length;
+  const userRank = getUserRank(watchedFilmsCount);
 
-export const createProfileStatusTemplate = (filters) => {
-  const {watched} = filters;
-  const status = getStatus(watched);
-  return (`<section class="header__profile profile">
-    <p class="profile__rating">${status}</p>
-    <img class="profile__avatar" src="images/bitmap@2x.png" alt="Avatar" width="35" height="35">
-  </section>
-  </div>
-  `);
+  return (
+    `<section class="header__profile profile">
+      <p class="profile__rating">${userRank}</p>
+      <img class="profile__avatar" src="images/bitmap@2x.png" alt="Avatar" width="35" height="35">
+    </section>`
+  );
 };
 
-export default class Status extends AbstractView {
-  constructor(filters) {
+export default class UserRank extends AbstarctView {
+  constructor(filmsModel) {
     super();
-    this._filters = filters;
-    // this._element = null;
+
+    this._filmsModel = filmsModel;
+
+    this._updateUser = this._updateUser.bind(this);
+
+    this._filmsModel.addObserver(this._updateUser);
   }
 
   getTemplate() {
-    return createProfileStatusTemplate(this._filters);
+    return createUserRankTemplate(this._filmsModel);
+  }
+
+  _updateUser() {
+    let prevElement = this.getElement();
+    const parent = prevElement.parentElement;
+    this.removeElement();
+
+    const newElement = this.getElement();
+
+    parent.replaceChild(newElement, prevElement);
+    prevElement = null;
   }
 }
