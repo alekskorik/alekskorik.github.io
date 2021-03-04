@@ -1,5 +1,5 @@
 export const sortByDate = (filmA, filmB) => {
-  return filmA.filmReleaseYear - filmB.filmReleaseYear;
+  return filmB.release - filmA.release;
 };
 
 export const sortByRating = (filmA, filmB) => {
