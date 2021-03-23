@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import PlacesList from './places-list.jsx';
+import PlaceCard from './place-card.jsx';
 
 const mock = [
   {
@@ -13,10 +13,15 @@ const mock = [
   },
 ];
 
-it(`Correctly render component PlacesList`, () => {
+it(`Correctly render component PlaceCard`, () => {
+  const testHandler = jest.fn();
   const tree = renderer
-  .create(<PlacesList
-    cards = {mock}
+  .create(<PlaceCard
+    onClick={testHandler}
+    onDeHover={testHandler}
+    onHover={testHandler}
+    index={mock[0].id}
+    data={mock[0]}
   />)
   .toJSON();
 

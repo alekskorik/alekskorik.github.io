@@ -3,15 +3,13 @@ import PropTypes from 'prop-types';
 import MainPage from '../main/main.jsx';
 
 const App = (props) => {
-  const {placesName} = props;
-  return <MainPage placesName={placesName} />;
+  const {data} = props;
+  return <MainPage offers={data} />;
 };
 
 App.propTypes = {
   // placesCount: PropTypes.number.isRequired,
-  placesName: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string
-  }))
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default App;
