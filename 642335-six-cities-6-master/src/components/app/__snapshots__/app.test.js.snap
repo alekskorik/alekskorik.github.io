@@ -85,7 +85,7 @@ exports[`Correctly renders component 'App' 1`] = `
                 <span
                   className="header__user-name user__name"
                 >
-                  Oliver.conner@gmail.com
+                  Sign in
                 </span>
               </a>
             </li>
@@ -110,86 +110,7 @@ exports[`Correctly renders component 'App' 1`] = `
       >
         <ul
           className="locations__list tabs__list"
-        >
-          <li
-            className="locations__item"
-          >
-            <a
-              className="locations__item-link tabs__item"
-              href="#"
-              onClick={[Function]}
-            >
-              <span>
-                Amsterdam
-              </span>
-            </a>
-          </li>
-          <li
-            className="locations__item"
-          >
-            <a
-              className="locations__item-link tabs__item"
-              href="#"
-              onClick={[Function]}
-            >
-              <span>
-                Paris
-              </span>
-            </a>
-          </li>
-          <li
-            className="locations__item"
-          >
-            <a
-              className="locations__item-link tabs__item"
-              href="#"
-              onClick={[Function]}
-            >
-              <span>
-                Cologne
-              </span>
-            </a>
-          </li>
-          <li
-            className="locations__item"
-          >
-            <a
-              className="locations__item-link tabs__item"
-              href="#"
-              onClick={[Function]}
-            >
-              <span>
-                Brussels
-              </span>
-            </a>
-          </li>
-          <li
-            className="locations__item"
-          >
-            <a
-              className="locations__item-link tabs__item"
-              href="#"
-              onClick={[Function]}
-            >
-              <span>
-                Hamburg
-              </span>
-            </a>
-          </li>
-          <li
-            className="locations__item"
-          >
-            <a
-              className="locations__item-link tabs__item"
-              href="#"
-              onClick={[Function]}
-            >
-              <span>
-                Dusseldorf
-              </span>
-            </a>
-          </li>
-        </ul>
+        />
       </section>
     </div>
     <div
@@ -209,11 +130,7 @@ exports[`Correctly renders component 'App' 1`] = `
           <b
             className="places__found"
           >
-            0
-             
-            places
-             to stay in 
-            Amsterdam
+            0 places to stay in Amsterdam
           </b>
           <form
             action="#"
@@ -227,13 +144,13 @@ exports[`Correctly renders component 'App' 1`] = `
             </span>
             <span
               className="places__sorting-type"
-              tabIndex="0"
+              tabIndex={0}
             >
               Popular
               <svg
                 className="places__sorting-arrow"
-                height="4"
-                width="7"
+                height={4}
+                width={7}
               >
                 <use
                   xlinkHref="#icon-arrow-select"
@@ -245,25 +162,25 @@ exports[`Correctly renders component 'App' 1`] = `
             >
               <li
                 className="places__option places__option--active"
-                tabIndex="0"
+                tabIndex={0}
               >
                 Popular
               </li>
               <li
                 className="places__option"
-                tabIndex="0"
+                tabIndex={0}
               >
                 Price: low to high
               </li>
               <li
                 className="places__option"
-                tabIndex="0"
+                tabIndex={0}
               >
                 Price: high to low
               </li>
               <li
                 className="places__option"
-                tabIndex="0"
+                tabIndex={0}
               >
                 Top rated first
               </li>

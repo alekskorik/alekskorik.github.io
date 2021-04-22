@@ -5,7 +5,7 @@ import PlacesList from './places-list.jsx';
 const mock = [
   {
     title: `Beautiful & luxurious apartment at great location`,
-    price: `120`,
+    price: 120,
     degree: `Apartment`,
     order: `Premium`,
     photo: `img/apartment-01.jpg`,
@@ -16,7 +16,7 @@ const mock = [
 it(`Correctly render component PlacesList`, () => {
   const tree = renderer
   .create(<PlacesList
-    cards = {mock}
+    offers = {mock}
   />)
   .toJSON();
 

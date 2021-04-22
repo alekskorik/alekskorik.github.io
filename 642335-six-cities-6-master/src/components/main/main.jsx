@@ -4,14 +4,27 @@ import PlacesList from '../places-list/places-list.jsx';
 import Map from '../map/map.jsx';
 import {connect} from 'react-redux';
 import CityList from '../city-list/city-list.jsx';
-import * as actions from '../../actions';
+import {ActionCreator} from '../../reducers/user/user.js';
 
-const MainPage = (props) => {
-  const {offers, cities, onChangeCity, currentCity} = props;
-  // console.log(onChangeCity);
-  const currentOffer = offers.filter((el) => el.city === currentCity);
-  let offersAmount = offers.filter((el) => el.city === currentCity).length;
+import withActiveItem from '../../hocs/with-active-item/with-active-item.js';
+
+import {getUserData, getAuthorizationStatus} from '../../reducers/user/selectors.js';
+import {getCurrentOffers, getCitiesList} from '../../reducers/data/selectors.js';
+import {getCurrentCity} from '../../reducers/user/selectors.js';
+import {Link} from 'react-router-dom';
+import {AppRoute} from "../../const";
+// import SignIn from '../sign-in/sign-in.jsx';
+// import {withAuthorization} from '../../hocs/with-authorization/with-authorization.js';
+
+// const SignInWrapped = withAuthorization(SignIn);
+const PlacesListWrapped = withActiveItem(PlacesList);
+const CityListWrapped = withActiveItem(CityList);
+
+const MainPage = ({offers, cities, onChangeCity, currentCity, userData, auth}) => {
+  const {email} = userData;
+  // let offersAmount = offers.filter((el) => el.city === currentCity).length;
   // console.log(data);
+  console.log(offers);
   return <div>
     <div style={{display: `none`}}>
       <svg xmlns="http://www.w3.org/2000/svg"><symbol id="icon-arrow-select" viewBox="0 0 7 4"><path fillRule="evenodd" clipRule="evenodd" d="M0 0l3.5 2.813L7 0v1.084L3.5 4 0 1.084V0z" /></symbol><symbol id="icon-bookmark" viewBox="0 0 17 18"><path d="M3.993 2.185l.017-.092V2c0-.554.449-1 .99-1h10c.522 0 .957.41.997.923l-2.736 14.59-4.814-2.407-.39-.195-.408.153L1.31 16.44 3.993 2.185z" /></symbol><symbol id="icon-star" viewBox="0 0 13 12"><path fillRule="evenodd" clipRule="evenodd" d="M6.5 9.644L10.517 12 9.451 7.56 13 4.573l-4.674-.386L6.5 0 4.673 4.187 0 4.573 3.549 7.56 2.483 12 6.5 9.644z" /></symbol></svg>
@@ -20,18 +33,20 @@ const MainPage = (props) => {
       <div className="container">
         <div className="header__wrapper">
           <div className="header__left">
-            <a className="header__logo-link header__logo-link--active">
+            <Link to={AppRoute.ROOT} className="header__logo-link header__logo-link--active">
               <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width={81} height={41} />
-            </a>
+            </Link>
           </div>
           <nav className="header__nav">
             <ul className="header__nav-list">
               <li className="header__nav-item user">
-                <a className="header__nav-link header__nav-link--profile" href="#">
+                <Link to={AppRoute.LOGIN} className="header__nav-link header__nav-link--profile">
                   <div className="header__avatar-wrapper user__avatar-wrapper">
                   </div>
-                  <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
-                </a>
+                  <span
+                    className="header__user-name user__name">{!auth ? email : `Sign in`}</span>
+                </Link>
+
               </li>
             </ul>
           </nav>
@@ -43,43 +58,24 @@ const MainPage = (props) => {
       <h1 className="visually-hidden">Cities</h1>
       <div className="tabs">
         <section className="locations container">
-          <CityList
+          <CityListWrapped
             onChangeCity={onChangeCity}
+            currentCity={currentCity}
             cities={cities}/>
         </section>
       </div>
       <div className="cities">
         <div className="cities__places-container container">
           <section className="cities__places places">
-            <h2 className="visually-hidden">Places</h2>
-            <b className="places__found">{offersAmount} {offersAmount === 1 ? `place` : `places` } to stay in {currentCity}</b>
-            <form className="places__sorting" action="#" method="get">
-              <span className="places__sorting-caption">Sort by</span>
-              <span className="places__sorting-type" tabIndex="0">
-                    Popular
-                <svg className="places__sorting-arrow" width="7" height="4">
-                  <use xlinkHref="#icon-arrow-select"></use>
-                </svg>
-              </span>
-              <ul className="places__options places__options--custom places__options--opened">
-                <li className="places__option places__option--active" tabIndex="0">Popular</li>
-                <li className="places__option" tabIndex="0">Price: low to high</li>
-                <li className="places__option" tabIndex="0">Price: high to low</li>
-                <li className="places__option" tabIndex="0">Top rated first</li>
-              </ul>
-            </form>
 
-            <PlacesList
-              currentCity={currentCity}
-              cards={offers} />
+            <PlacesListWrapped
+              city={currentCity}
+              offers={offers} />
 
           </section>
           <div className="cities__right-section">
             <section className="cities__map map" >
-              <Map cards={currentOffer}
-                key={currentCity}
-                currentCity={currentCity}
-              />
+              <Map cards={offers} />
             </section>
           </div>
         </div>
@@ -93,18 +89,25 @@ MainPage.propTypes = {
   offers: PropTypes.arrayOf(PropTypes.object).isRequired,
   cities: PropTypes.object,
   onChangeCity: PropTypes.func,
-  currentCity: PropTypes.string
+  currentCity: PropTypes.string,
+  userData: PropTypes.object,
+  auth: PropTypes.bool
 };
 
 
 const mapStateToProps = (state) => {
   return {
-    cities: state.listCities,
-    currentCity: state.currentCity
+    offers: getCurrentOffers(state),
+    cities: getCitiesList(state),
+    currentCity: getCurrentCity(state),
+    userData: getUserData(state),
+    auth: getAuthorizationStatus(state)
   };
 };
+
+
 const mapDispatchToProps = (dispatch) => ({
-  onChangeCity: (city) => dispatch(actions.changeCity(city)),
+  onChangeCity: (city) => dispatch(ActionCreator.changeCity(city)),
 });
 
 

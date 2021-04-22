@@ -5,7 +5,7 @@ exports[`Test CityList Component 1`] = `
   className="locations__list tabs__list"
 >
   <li
-    className="locations__item"
+    className="locations__item-link "
   >
     <a
       className="locations__item-link tabs__item"
@@ -18,7 +18,7 @@ exports[`Test CityList Component 1`] = `
     </a>
   </li>
   <li
-    className="locations__item"
+    className="locations__item-link "
   >
     <a
       className="locations__item-link tabs__item"
@@ -31,7 +31,7 @@ exports[`Test CityList Component 1`] = `
     </a>
   </li>
   <li
-    className="locations__item"
+    className="locations__item-link "
   >
     <a
       className="locations__item-link tabs__item"

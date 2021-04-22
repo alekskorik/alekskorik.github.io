@@ -5,7 +5,7 @@ import PlaceCard from './place-card.jsx';
 const mock = [
   {
     title: `Beautiful & luxurious apartment at great location`,
-    price: `120`,
+    price: 120,
     degree: `Apartment`,
     order: `Premium`,
     photo: `img/apartment-01.jpg`,

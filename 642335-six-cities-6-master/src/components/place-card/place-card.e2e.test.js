@@ -7,7 +7,7 @@ import PlaceCard from './place-card.jsx';
 const mock = [
   {
     title: `Beautiful & luxurious apartment at great location`,
-    price: `120`,
+    price: 120,
     degree: `Apartment`,
     order: `Premium`,
     photo: `img/apartment-01.jpg`,
@@ -22,7 +22,8 @@ describe(`Test e2e for value component`, () => {
   const app = shallow(<PlaceCard
     index={mock[0].id}
     data={mock[0]}
-    onClick = {clickHandler}/>);
+    onClickActiveCard = {clickHandler}/>);
+
 
   it(`Click on link - 'Head in Card'`, () => {
     const imageCard = app.find(`.place-card__image`);

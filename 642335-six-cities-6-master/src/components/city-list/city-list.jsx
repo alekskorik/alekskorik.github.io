@@ -1,13 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const CityList = ({onChangeCity, cities}) => {
+const CityList = ({cities, onChangeCity, onActiveItemChange, currentCity}) => {
+
   return <ul className="locations__list tabs__list">
-    {Array.from(cities).map((city) => <li key={city} className="locations__item">
+    {Array.from(cities).map((city) => <li key={city} className={`locations__item-link ${currentCity === city ? `tabs__item--active` : ``}`}>
       <a
         onClick={(evt) => {
           evt.preventDefault();
           onChangeCity(city);
+          onActiveItemChange(city);
         }}
         className="locations__item-link tabs__item"
         href="#">
@@ -19,7 +21,9 @@ const CityList = ({onChangeCity, cities}) => {
 
 CityList.propTypes = {
   onChangeCity: PropTypes.func,
-  cities: PropTypes.object
+  cities: PropTypes.object,
+  onActiveItemChange: PropTypes.func,
+  currentCity: PropTypes.string
 };
 
 export default CityList;

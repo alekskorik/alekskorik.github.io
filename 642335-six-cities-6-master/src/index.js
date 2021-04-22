@@ -1,23 +1,39 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/app/app.jsx';
-import offers from './mocks/offers.js';
-import {createStore} from 'redux';
+// import offers from './mocks/offers.js';
+import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
-// console.log(offers);
+import reducer from './reducers/index';
 
-import reducer from './reducer';
+import thunk from 'redux-thunk';
+import {compose} from 'recompose';
+import {createAPI} from './api.js';
+import {BrowserRouter} from 'react-router-dom';
+
+
+import {Operation} from './reducers/data/data.js';
+
+// const api = createAPI((...args) => store.dispatch(...args));
+const api = createAPI(() => history.pushState(null, null, `/login`));
 
 const store = createStore(
     reducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    compose(
+        applyMiddleware(thunk.withExtraArgument(api)),
+        window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f
+    )
 );
+const init = () => {
+  store.dispatch(Operation.loadOffers());
+  ReactDOM.render(
+      <Provider store={store}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </Provider>
+      , document.getElementById(`root`)
+  );
+};
 
-ReactDOM.render(
-    <Provider store={store}>
-      <App
-        data={offers}
-      />
-    </Provider>
-    , document.getElementById(`root`)
-);
+init();

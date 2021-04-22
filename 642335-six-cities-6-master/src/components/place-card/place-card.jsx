@@ -13,18 +13,12 @@ export default class PlaceCard extends Component {
       title,
       degree,
       order,
-      photo,
+      previewImage,
       price} = this.props.data;
-    const {
-      onClick,
-      onHover,
-      onDeHover} = this.props;
+    const {onHover, onClickActiveCard} = this.props;
     return (
       <article
-        onMouseEnter={() => {
-          onHover(id);
-        }}
-        onMouseLeave={onDeHover}
+        onMouseEnter={onHover}
         className="cities__place-card place-card">
         <div className="place-card__mark">
           <span>{order}</span>
@@ -32,11 +26,11 @@ export default class PlaceCard extends Component {
         <div className="cities__image-wrapper place-card__image-wrapper">
           <a href="#" >
             <img
-              onClick={()=> {
-                onClick(id);
+              onClick={() => {
+                onClickActiveCard(id);
               }}
               className="place-card__image"
-              src={photo}
+              src={previewImage}
               width={260}
               height={200}
               alt="Place image" />
@@ -72,15 +66,14 @@ export default class PlaceCard extends Component {
 }
 
 PlaceCard.propTypes = {
-  onClick: PropTypes.func,
-  onDeHover: PropTypes.func,
+  onClickActiveCard: PropTypes.func,
   onHover: PropTypes.func,
   data: PropTypes.shape({
     id: PropTypes.number,
     degree: PropTypes.string,
     order: PropTypes.string,
-    photo: PropTypes.string,
-    price: PropTypes.string,
+    previewImage: PropTypes.string,
+    price: PropTypes.number,
     title: PropTypes.string,
   }).isRequired,
 };
