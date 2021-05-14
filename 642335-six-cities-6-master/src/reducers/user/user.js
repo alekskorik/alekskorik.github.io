@@ -1,7 +1,7 @@
 
 const initialState = {
   currentCity: `Amsterdam`,
-  isAuthorizationRequired: true,
+  isAuthorizationRequired: false,
   userData: {},
 };
 

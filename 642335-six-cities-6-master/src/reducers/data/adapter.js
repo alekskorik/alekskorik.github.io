@@ -17,7 +17,7 @@ export const adapter = (data) => {
       id: offer.id,
       images: offer.images,
       isFavorite: offer.is_favorite,
-      isPremium: offer.isPremium,
+      isPremium: offer.is_premium,
       location: [offer.location.latitude, offer.location.longitude],
       maxAdults: offer.max_adults,
       previewImage: offer.preview_image,
