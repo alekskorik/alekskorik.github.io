@@ -19,6 +19,7 @@ const App = (isAuthorization) => {
   );
 };
 
+
 const mapStateToProps = (state) => {
   return {
     isAuthorization: getAuthorizationStatus(state),

@@ -10,6 +10,7 @@ export default class PlacesList extends PureComponent {
 
   render() {
     const {offers, onActiveItemChange, city} = this.props;
+    console.log(onActiveItemChange);
     return (
       <React.Fragment>
         <h2 className="visually-hidden">Places</h2>
@@ -38,7 +39,7 @@ export default class PlacesList extends PureComponent {
           */}
         </form>
         <div className="cities__places-list places__list tabs__content">
-          {offers.map((card) => {
+          {offers.map((card, index) => {
 
             return <PlaceCard
               onClickActiveCard={(id) => {
@@ -46,6 +47,7 @@ export default class PlacesList extends PureComponent {
               }}
               data={card}
               key={card.id}
+              activeIndex={index}
             />;
           })}
         </div>

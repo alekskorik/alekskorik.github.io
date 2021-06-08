@@ -5,6 +5,7 @@ import {Switch, Route, Redirect} from 'react-router-dom';
 
 import SignIn from '../../components/sign-in/sign-in.jsx';
 import Favorites from '../../components/favorites/favorites.jsx';
+import Property from '../../components/property/property.jsx';
 
 import {withAuthorization} from '../../hocs/with-authorization/with-authorization.js';
 import withPrivateRoute from '../../hocs/with-private-route/with-private-route.js';
@@ -25,20 +26,20 @@ export const withRoutes = (Component) => {
       const FavoritesPrivate = withPrivateRoute(Favorites, isLoggedIn, AppRoute.LOGIN);
       return (
         <Switch>
-          <Route path={AppRoute.ROOT} exact render = {() => {
-            return <Component {...this.props}/>;
-          } }/>
+          <Route path="/" exact component={Component} />
           <Route path={AppRoute.LOGIN} exact component={SignInWrappedPrivate} />
           <Route path={AppRoute.FAVORITES} exact component={FavoritesPrivate} />
+          <Route path="/offer/:id" exact render={({match}) => <Property offerId={match.params.id} />} />
+          {/* <Redirect to={AppRoute.ROOT} />*/}
 
-          <Redirect to={AppRoute.ROOT} />
         </Switch>
       );
     }
   }
 
   WithRoutes.propTypes = {
-    isLoggedIn: PropTypes.bool
+    isLoggedIn: PropTypes.bool,
+    offers: PropTypes.array
   };
 
   return WithRoutes;

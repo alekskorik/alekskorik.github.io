@@ -1,7 +1,10 @@
 import React from 'react';
 import FavoriteButton from '../../components/favorite-button/favorite-button.jsx';
-// import {Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
+import Rating from '../rating/rating.jsx';
+import {AppRoute} from "../../const";
+
 
 const FavoriteCard = ({offer}) => {
   return <React.Fragment>
@@ -24,12 +27,12 @@ const FavoriteCard = ({offer}) => {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{width: 80 + `%`}}></span>
+            <Rating rating={offer.rating} />
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#">{offer.title}</a>
+          <Link to={AppRoute.OFFER + `/` + offer.id} >{offer.title}</Link>
         </h2>
         <p className="place-card__type">{offer.type}</p>
       </div>

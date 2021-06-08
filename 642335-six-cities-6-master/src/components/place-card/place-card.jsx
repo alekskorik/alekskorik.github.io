@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import FavoriteButton from '../../components/favorite-button/favorite-button.jsx';
+import {Link} from 'react-router-dom';
+import {AppRoute} from "../../const";
+import Rating from '../rating/rating.jsx';
+
 
 export default class PlaceCard extends Component {
 
@@ -13,22 +17,24 @@ export default class PlaceCard extends Component {
       id,
       title,
       type,
-      order,
       previewImage,
-      price} = this.props.data;
-    const {onHover, onClickActiveCard} = this.props;
+      price,
+      rating,
+      isPremium} = this.props.data;
+    const {onHover, onClickActiveCard, activeIndex} = this.props;
     return (
       <article
         onMouseEnter={onHover}
         className="cities__place-card place-card">
-        <div className="place-card__mark">
-          <span>{order}</span>
-        </div>
+        {isPremium ? <div className="place-card__mark">
+          <span>Premium</span>
+        </div> : ``}
         <div className="cities__image-wrapper place-card__image-wrapper">
           <a href="#" >
             <img
-              onClick={() => {
-                onClickActiveCard(id);
+              onClick={(evt) => {
+                evt.preventDefault();
+                onClickActiveCard(activeIndex);
               }}
               className="place-card__image"
               src={previewImage}
@@ -47,12 +53,12 @@ export default class PlaceCard extends Component {
           </div>
           <div className="place-card__rating rating">
             <div className="place-card__stars rating__stars">
-              <span style={{width: `93%`}} />
+              <Rating rating={rating} />
               <span className="visually-hidden">Rating</span>
             </div>
           </div>
           <h2 className="place-card__name">
-            <a href="#" >{title}</a>
+            <Link to={AppRoute.OFFER + `/` + id} >{title}</Link>
           </h2>
           <p className="place-card__type">{type}</p>
         </div>
@@ -64,12 +70,14 @@ export default class PlaceCard extends Component {
 PlaceCard.propTypes = {
   onClickActiveCard: PropTypes.func,
   onHover: PropTypes.func,
+  activeIndex: PropTypes.number,
   data: PropTypes.shape({
     id: PropTypes.number,
     type: PropTypes.string,
-    order: PropTypes.string,
+    isPremium: PropTypes.bool,
     previewImage: PropTypes.string,
     price: PropTypes.number,
     title: PropTypes.string,
+    rating: PropTypes.number,
   }).isRequired,
 };

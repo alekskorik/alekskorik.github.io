@@ -4,13 +4,21 @@ import {RequestStatus} from '../../const.js';
 const initialState = {
   offers: [],
   favoriteOffers: [],
+  reviews: [],
+  nearbyOffers: [],
   favoriteRequestStatus: RequestStatus.NOT_SENT,
+  activeOfferId: null,
+  currentOfferId: null,
 };
 
 export const ActionType = {
   LOAD_OFFERS: `LOAD_OFFERS`,
   LOAD_FAVORITE: `LOAD_FAVORITE`,
-  SET_FAVORITE_STATUS: `SET_FAVORITE_STATUS`
+  LOAD_REVIEWS: `LOAD_REVIEWS`,
+  LOAD_NEARBY_OFFERS: `LOAD_NEARBY_OFFERS`,
+  SET_FAVORITE_STATUS: `SET_FAVORITE_STATUS`,
+  CURRENT_OFFER: `CURRENT_OFFER`,
+  ACTIVE_OFFER: `ACTIVE_OFFER`
 };
 
 const ActionCreator = {
@@ -26,10 +34,34 @@ const ActionCreator = {
       offers
     };
   },
+  loadReviews: (reviews) => {
+    return {
+      type: ActionType.LOAD_REVIEWS,
+      reviews
+    };
+  },
+  loadNearbyOffers: (offers) => {
+    return {
+      type: ActionType.LOAD_NEARBY_OFFERS,
+      offers
+    };
+  },
   setFavoriteStatus: (status) => {
     return {
       type: ActionType.SET_FAVORITE_STATUS,
       status
+    };
+  },
+  currentOfferId: (id) => {
+    return {
+      type: ActionType.CURRENT_OFFER,
+      id
+    };
+  },
+  activeOfferId: (id) => {
+    return {
+      type: ActionType.ACTIVE_OFFER,
+      id
     };
   },
 };
@@ -47,7 +79,20 @@ const Operation = {
         dispatch(ActionCreator.loadFavorite(adapter(response.data)));
       });
   },
-  changeIsOfferFavorite: (offerId, isFavorite) => (dispatch, getState, api) => {
+  loadReviews: (offerId) => (dispatch, _getState, api) => {
+    return api.get(`/comments/${offerId}`)
+    .then((response) => {
+      dispatch(ActionCreator.loadReviews(response.data));
+    });
+  },
+  loadNearbyOffers: (offerId) => (dispatch, _getState, api) => {
+    return api.get(`/hotels/${offerId}/nearby`)
+    .then((response) => {
+      console.log(response);
+      dispatch(ActionCreator.loadNearbyOffers(response.data));
+    });
+  },
+  changeIsOfferFavorite: (offerId, isFavorite) => (dispatch, _getState, api) => {
     dispatch(ActionCreator.setFavoriteStatus(RequestStatus.SENDING));
     return api.post(`/favorite/${offerId}/${isFavorite ? 1 : 0}`)
     .then(() => {
@@ -71,9 +116,25 @@ const reducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         favoriteOffers: action.offers
       });
+    case ActionType.LOAD_REVIEWS:
+      return Object.assign({}, state, {
+        reviews: action.reviews
+      });
+    case ActionType.LOAD_NEARBY_OFFERS:
+      return Object.assign({}, state, {
+        nearbyOffers: action.offers
+      });
     case ActionType.SET_FAVORITE_STATUS:
       return Object.assign({}, state, {
         favoriteRequestStatus: action.status
+      });
+    case ActionType.CURRENT_OFFER:
+      return Object.assign({}, state, {
+        currentOfferId: action.id
+      });
+    case ActionType.ACTIVE_OFFER:
+      return Object.assign({}, state, {
+        activeOfferId: action.id
       });
     default: return state;
   }

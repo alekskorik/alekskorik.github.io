@@ -1,9 +1,8 @@
 export const AppRoute = {
   LOGIN: `/login`,
-  LOSE: `/lose`,
   FAVORITES: `/favorites`,
   ROOT: `/`,
-  GAME: `/game`,
+  OFFER: `/offer`,
 };
 
 export const RequestStatus = {
@@ -11,4 +10,8 @@ export const RequestStatus = {
   SENDING: `SENDING`,
   SUCCESS: `SUCCESS`,
   ERROR: `ERROR`,
+};
+
+export const switchRating = (rating) => {
+  return rating * 20 + `%`;
 };

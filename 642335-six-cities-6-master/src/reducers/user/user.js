@@ -40,6 +40,14 @@ const Operation = {
           dispatch(ActionCreator.userLogin());
         }
       });
+  },
+  userSaveCookie: () => (dispatch, _getState, api) => {
+    return api.get(`/login`).then(({data, status}) => {
+      if (status === 200) {
+        dispatch(ActionCreator.userSaveData(data));
+        dispatch(ActionCreator.userLogin());
+      }
+    });
   }
 };
 

@@ -75,7 +75,7 @@ const MainPage = ({offers, cities, onChangeCity, currentCity, userData, auth}) =
           </section>
           <div className="cities__right-section">
             <section className="cities__map map" >
-              <Map cards={offers} />
+              <Map />
             </section>
           </div>
         </div>

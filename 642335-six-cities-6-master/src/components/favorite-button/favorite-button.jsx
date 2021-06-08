@@ -11,8 +11,9 @@ import {getAuthorizationStatus} from '../../reducers/user/selectors.js';
 import {AppRoute} from "../../const.js";
 
 
-const FavoriteButton = ({offer, isAuthorization, changeIsOfferFavorite}) => {
+const FavoriteButton = ({offer, isAuthorization, changeIsOfferFavorite, isBig}) => {
   let history = useHistory();
+  console.log(isBig === true);
   const handleFavoriteButtonClick = () => isAuthorization === true ?
     changeIsOfferFavorite(offer.id, !offer.isFavorite) : history.push(AppRoute.LOGIN);
 
@@ -20,13 +21,13 @@ const FavoriteButton = ({offer, isAuthorization, changeIsOfferFavorite}) => {
 
     offer.isFavorite ?
       <button className="place-card__bookmark-button place-card__bookmark-button--active button" type="button" onClick={handleFavoriteButtonClick}>
-        <svg className="place-card__bookmark-icon" width={18} height={19}>
+        <svg className="place-card__bookmark-icon" width={isBig ? 31 : 18} height={isBig ? 33 : 19}>
           <use xlinkHref="#icon-bookmark"></use>
         </svg>
         <span className="visually-hidden">In bookmarks</span>
       </button> :
       <button className="place-card__bookmark-button button" type="button" onClick={handleFavoriteButtonClick}>
-        <svg className="place-card__bookmark-icon" width={18} height={19}>
+        <svg className="place-card__bookmark-icon" width={isBig ? 31 : 18} height={isBig ? 33 : 19}>
           <use xlinkHref="#icon-bookmark" />
         </svg>
         <span className="visually-hidden">To bookmarks</span>
@@ -45,7 +46,8 @@ FavoriteButton.propTypes = {
     isFavorite: PropTypes.bool,
   }).isRequired,
   isAuthorization: PropTypes.bool,
-  changeIsOfferFavorite: PropTypes.func.isRequired
+  changeIsOfferFavorite: PropTypes.func.isRequired,
+  isBig: PropTypes.bool,
 };
 
 const mapStateToProps = (state) => {

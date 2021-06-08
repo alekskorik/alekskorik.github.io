@@ -14,6 +14,7 @@ import {AppRoute} from './const.js';
 
 
 import {Operation} from './reducers/data/data.js';
+import {Operation as OperationUser} from './reducers/user/user.js';
 
 // const api = createAPI((...args) => store.dispatch(...args));
 const api = createAPI(() => history.push(AppRoute.LOGIN));
@@ -27,6 +28,7 @@ const store = createStore(
 );
 const init = () => {
   store.dispatch(Operation.loadOffers());
+  store.dispatch(OperationUser.userSaveCookie());
   ReactDOM.render(
       <Provider store={store}>
         <App />

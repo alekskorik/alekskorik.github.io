@@ -17,26 +17,11 @@ class Favorite extends React.PureComponent {
     console.log(this.props);
   }
   componentDidMount() {
-    console.log(this.props);
     this.props.loadFavorite();
-    console.log(this.props.offers);
-    // this._prevProps = this.props;
   }
-
-  // componentDidUpdate(prevProps) {
-  //   console.log(prevProps.offers.length === this.props.offers.length);
-  //   console.log(prevProps.offers);
-  //   console.log(this.props.offers);
-  //   if (this.props.offers.length === prevProps.offers.length) {
-  //   //   console.log(this._prevProps);
-  //   //   console.log(this.props.offers);
-  //     this.props.loadFavorite();
-  //   }
-  // }
 
   render() {
     const {offers, cities} = this.props;
-    // console.log(FavoriteEmpty);
     if (offers.length === 0) {
       return <React.Fragment>
         <Header />
