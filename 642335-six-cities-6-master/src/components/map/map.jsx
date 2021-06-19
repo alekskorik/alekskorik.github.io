@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import leaflet from 'leaflet';
 import {connect} from 'react-redux';
 import {getCurrentCity} from '../../reducers/user/selectors.js';
-import {getCurrentOffers, getCurrentCityLocation, getActiveCard} from '../../reducers/data/selectors.js';
+import {getCurrentCityLocation, getActiveCard} from '../../reducers/data/selectors.js';
 
 
 class Map extends Component {
@@ -21,7 +21,10 @@ class Map extends Component {
   }
 
   _initMap() {
-    const city = [39.61, -105.02];
+    // let city = [39.61, -105.02];
+    console.log(this.props);
+    const cityLocation = this.props.cityLocation;
+    const city = cityLocation;
     this._map = leaflet.map(`map`, {
       center: city,
       zoom: this._zoom,
@@ -42,6 +45,7 @@ class Map extends Component {
   }
 
   componentDidUpdate(prevProps) {
+    console.log(prevProps, this.props);
     const customIcon = leaflet.icon({
       iconUrl: `img/pin-active.svg`,
       iconSize: [25, 41],
@@ -85,7 +89,7 @@ Map.propTypes = {
 const mapStateToProps = (state) => {
   return {
     activeCity: getCurrentCity(state),
-    offers: getCurrentOffers(state),
+    // offers: getCurrentOffers(state),
     cityLocation: getCurrentCityLocation(state),
     activeCard: getActiveCard,
   };

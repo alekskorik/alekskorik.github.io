@@ -13,7 +13,6 @@ import {AppRoute} from "../../const.js";
 
 const FavoriteButton = ({offer, isAuthorization, changeIsOfferFavorite, isBig}) => {
   let history = useHistory();
-  console.log(isBig === true);
   const handleFavoriteButtonClick = () => isAuthorization === true ?
     changeIsOfferFavorite(offer.id, !offer.isFavorite) : history.push(AppRoute.LOGIN);
 

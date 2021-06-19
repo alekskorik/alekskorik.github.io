@@ -18,7 +18,7 @@ export const ActionType = {
   LOAD_NEARBY_OFFERS: `LOAD_NEARBY_OFFERS`,
   SET_FAVORITE_STATUS: `SET_FAVORITE_STATUS`,
   CURRENT_OFFER: `CURRENT_OFFER`,
-  ACTIVE_OFFER: `ACTIVE_OFFER`
+  ACTIVE_OFFER: `ACTIVE_OFFER`,
 };
 
 const ActionCreator = {
@@ -88,8 +88,7 @@ const Operation = {
   loadNearbyOffers: (offerId) => (dispatch, _getState, api) => {
     return api.get(`/hotels/${offerId}/nearby`)
     .then((response) => {
-      console.log(response);
-      dispatch(ActionCreator.loadNearbyOffers(response.data));
+      dispatch(ActionCreator.loadNearbyOffers(adapter(response.data)));
     });
   },
   changeIsOfferFavorite: (offerId, isFavorite) => (dispatch, _getState, api) => {
