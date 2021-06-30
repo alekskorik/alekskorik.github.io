@@ -12,6 +12,13 @@ export const RequestStatus = {
   ERROR: `ERROR`,
 };
 
+export const SortingOptions = {
+  Popular: `POPULAR`,
+  HighToLow: `HIGH_TO_LOW`,
+  LowToHigh: `LOW_TO_HIGH`,
+  ByRating: `BY_RATING`,
+};
+
 export const switchRating = (rating) => {
   return rating * 20 + `%`;
 };

@@ -1,0 +1,166 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test FavoriteCard Component 1`] = `
+Array [
+  <div
+    className="property__mark"
+  >
+    <span>
+      Premium
+    </span>
+  </div>,
+  <div
+    className="property__name-wrapper"
+  >
+    <h1
+      className="property__name"
+    >
+      
+    </h1>
+    <button
+      className="property__bookmark-button button"
+      type="button"
+    >
+      <button
+        className="place-card__bookmark-button place-card__bookmark-button--active button"
+        onClick={[Function]}
+        type="button"
+      >
+        <svg
+          className="place-card__bookmark-icon"
+          height={33}
+          width={31}
+        >
+          <use
+            xlinkHref="#icon-bookmark"
+          />
+        </svg>
+        <span
+          className="visually-hidden"
+        >
+          In bookmarks
+        </span>
+      </button>
+      <span
+        className="visually-hidden"
+      >
+        To bookmarks
+      </span>
+    </button>
+  </div>,
+  <div
+    className="property__rating rating"
+  >
+    <div
+      className="property__stars rating__stars"
+    >
+      <span
+        style={
+          Object {
+            "width": "NaN%",
+          }
+        }
+      />
+      <span
+        className="visually-hidden"
+      >
+        Rating
+      </span>
+    </div>
+    <span
+      className="property__rating-value rating__value"
+    />
+  </div>,
+  <ul
+    className="property__features"
+  >
+    <li
+      className="property__feature property__feature--entire"
+    >
+      
+    </li>
+    <li
+      className="property__feature property__feature--bedrooms"
+    >
+      undefined Bedrooms
+    </li>
+    <li
+      className="property__feature property__feature--adults"
+    >
+      Max undefined adults
+    </li>
+  </ul>,
+  <div
+    className="property__price"
+  >
+    <b
+      className="property__price-value"
+    >
+      €
+      222
+    </b>
+    <span
+      className="property__price-text"
+    >
+       night
+    </span>
+  </div>,
+  <div
+    className="property__inside"
+  >
+    <h2
+      className="property__inside-title"
+    >
+      What's inside
+    </h2>
+    <ul
+      className="property__inside-list"
+    >
+      <li
+        className="property__inside-item"
+      >
+        1
+      </li>
+      <li
+        className="property__inside-item"
+      >
+        2
+      </li>
+    </ul>
+  </div>,
+  <div
+    className="property__host"
+  >
+    <h2
+      className="property__host-title"
+    >
+      Meet the host
+    </h2>
+    <div
+      className="property__host-user user"
+    >
+      <div
+        className="property__avatar-wrapper--pro"
+      >
+        <img
+          alt="Host avatar"
+          className="property__avatar user__avatar"
+          height="74"
+          src="1"
+          width="74"
+        />
+      </div>
+      <span
+        className="property__user-name"
+      />
+    </div>
+    <div
+      className="property__description"
+    >
+      <p
+        className="property__text"
+      />
+    </div>
+  </div>,
+]
+`;

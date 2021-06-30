@@ -7,7 +7,7 @@ const initialState = {
   reviews: [],
   nearbyOffers: [],
   favoriteRequestStatus: RequestStatus.NOT_SENT,
-  activeOfferId: null,
+  activeOfferId: 9,
   currentOfferId: null,
 };
 
@@ -102,6 +102,14 @@ const Operation = {
     // .catch(() => {
     //   dispatch(ActionCreator.setFavoriteRequestStatus(RequestStatus.ERROR));
     // });
+  },
+  uploadReview: (rating, comment, offerId) => (dispatch, _getState, api) => {
+    return api.post(`/comments/${offerId}`, {rating, comment})
+    .then(({status, data}) => {
+      if (status === 200) {
+        dispatch(ActionCreator.loadReviews(data));
+      }
+    });
   },
 };
 

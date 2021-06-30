@@ -56,6 +56,8 @@ exports[`Correctly render component MainPage 1`] = `
         >
           <a
             className="header__logo-link header__logo-link--active"
+            href="/"
+            onClick={[Function]}
           >
             <img
               alt="6 cities logo"
@@ -77,7 +79,8 @@ exports[`Correctly render component MainPage 1`] = `
             >
               <a
                 className="header__nav-link header__nav-link--profile"
-                href="#"
+                href="/login"
+                onClick={[Function]}
               >
                 <div
                   className="header__avatar-wrapper user__avatar-wrapper"
@@ -144,6 +147,7 @@ exports[`Correctly render component MainPage 1`] = `
             </span>
             <span
               className="places__sorting-type"
+              onClick={[Function]}
               tabIndex={0}
             >
               Popular
@@ -158,28 +162,32 @@ exports[`Correctly render component MainPage 1`] = `
               </svg>
             </span>
             <ul
-              className="places__options places__options--custom places__options--opened"
+              className="places__options places__options--custom "
             >
               <li
                 className="places__option places__option--active"
+                onClick={[Function]}
                 tabIndex={0}
               >
                 Popular
               </li>
               <li
-                className="places__option"
+                className="places__option "
+                onClick={[Function]}
                 tabIndex={0}
               >
                 Price: low to high
               </li>
               <li
-                className="places__option"
+                className="places__option "
+                onClick={[Function]}
                 tabIndex={0}
               >
                 Price: high to low
               </li>
               <li
-                className="places__option"
+                className="places__option "
+                onClick={[Function]}
                 tabIndex={0}
               >
                 Top rated first
@@ -197,6 +205,7 @@ exports[`Correctly render component MainPage 1`] = `
             className="cities__map map"
           >
             <div
+              className="cities__map"
               id="map"
               style={
                 Object {

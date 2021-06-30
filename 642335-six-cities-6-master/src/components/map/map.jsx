@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import leaflet from 'leaflet';
 import {connect} from 'react-redux';
@@ -6,7 +6,7 @@ import {getCurrentCity} from '../../reducers/user/selectors.js';
 import {getCurrentCityLocation, getActiveCard} from '../../reducers/data/selectors.js';
 
 
-class Map extends Component {
+class Map extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -21,10 +21,7 @@ class Map extends Component {
   }
 
   _initMap() {
-    // let city = [39.61, -105.02];
-    console.log(this.props);
-    const cityLocation = this.props.cityLocation;
-    const city = cityLocation;
+    const city = this.props.cityLocation;
     this._map = leaflet.map(`map`, {
       center: city,
       zoom: this._zoom,
@@ -33,10 +30,10 @@ class Map extends Component {
     });
     this._map.setView(city, this._zoom);
     leaflet
-    .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
-      attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
-    })
-    .addTo(this._map);
+        .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
+          attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
+        })
+        .addTo(this._map);
     this._addMarkers();
   }
 
@@ -45,7 +42,6 @@ class Map extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    console.log(prevProps, this.props);
     const customIcon = leaflet.icon({
       iconUrl: `img/pin-active.svg`,
       iconSize: [25, 41],
@@ -62,7 +58,7 @@ class Map extends Component {
         if (activeCard === index) {
           leaflet.marker(offers[activeCard].location, {icon: customIcon}).addTo(this._group);
         } else {
-          leaflet.marer(item.location).addTo(this._group);
+          leaflet.marker(item.location).addTo(this._group);
         }
       });
 
@@ -70,14 +66,15 @@ class Map extends Component {
 
   }
 
+
   render() {
     return (
       <div className="cities__map" style={{height: `100%`}} id="map">
       </div>
     );
   }
-
 }
+
 
 Map.propTypes = {
   offers: PropTypes.array,
@@ -85,13 +82,11 @@ Map.propTypes = {
   cityLocation: PropTypes.array,
   activeCard: PropTypes.number
 };
-
 const mapStateToProps = (state) => {
   return {
     activeCity: getCurrentCity(state),
-    // offers: getCurrentOffers(state),
     cityLocation: getCurrentCityLocation(state),
-    activeCard: getActiveCard,
+    activeCard: getActiveCard(state),
   };
 };
 

@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-// import history from "../../history.js";
 import {useHistory} from "react-router-dom";
 
 
@@ -43,7 +42,7 @@ FavoriteButton.propTypes = {
     price: PropTypes.number,
     title: PropTypes.string,
     isFavorite: PropTypes.bool,
-  }).isRequired,
+  }),
   isAuthorization: PropTypes.bool,
   changeIsOfferFavorite: PropTypes.func.isRequired,
   isBig: PropTypes.bool,

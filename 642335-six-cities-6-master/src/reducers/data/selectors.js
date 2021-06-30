@@ -35,7 +35,7 @@ export const getCurrentOffer = (id) => createSelector(
 );
 
 export const getActiveCard = (state) => {
-  return state[NAME_SPACE].getActiveId;
+  return state[NAME_SPACE].activeOfferId;
 };
 
 

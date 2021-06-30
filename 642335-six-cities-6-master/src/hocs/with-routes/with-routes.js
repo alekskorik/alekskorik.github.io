@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {Switch, Route, Redirect} from 'react-router-dom';
+import {Switch, Route} from 'react-router-dom';
 
 import SignIn from '../../components/sign-in/sign-in.jsx';
 import Favorites from '../../components/favorites/favorites.jsx';

@@ -2,6 +2,7 @@
 
 exports[`Snapshot test Map Component 1`] = `
 <div
+  className="cities__map"
   id="map"
   style={
     Object {

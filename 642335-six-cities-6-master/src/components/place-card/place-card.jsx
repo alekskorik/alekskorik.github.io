@@ -21,10 +21,13 @@ export default class PlaceCard extends Component {
       price,
       rating,
       isPremium} = this.props.data;
-    const {onHover, onClickActiveCard, activeIndex} = this.props;
+    const {onClickActiveCard, activeIndex} = this.props;
     return (
       <article
-        onMouseEnter={onHover}
+        onMouseEnter={(evt) => {
+          evt.preventDefault();
+          onClickActiveCard(activeIndex);
+        }}
         className="cities__place-card place-card">
         {isPremium ? <div className="place-card__mark">
           <span>Premium</span>
@@ -32,10 +35,6 @@ export default class PlaceCard extends Component {
         <div className="cities__image-wrapper place-card__image-wrapper">
           <a href="#" >
             <img
-              onClick={(evt) => {
-                evt.preventDefault();
-                onClickActiveCard(activeIndex);
-              }}
               className="place-card__image"
               src={previewImage}
               width={260}

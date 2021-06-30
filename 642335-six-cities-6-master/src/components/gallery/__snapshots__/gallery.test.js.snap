@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test FavoriteCard Component 1`] = `
+<div
+  className="property__gallery"
+>
+  <div
+    className="property__image-wrapper"
+  >
+    <img
+      alt="Photo studio"
+      className="property__image"
+      src="1"
+    />
+  </div>
+  <div
+    className="property__image-wrapper"
+  >
+    <img
+      alt="Photo studio"
+      className="property__image"
+      src="2"
+    />
+  </div>
+  <div
+    className="property__image-wrapper"
+  >
+    <img
+      alt="Photo studio"
+      className="property__image"
+      src="3"
+    />
+  </div>
+  <div
+    className="property__image-wrapper"
+  >
+    <img
+      alt="Photo studio"
+      className="property__image"
+      src="4"
+    />
+  </div>
+  <div
+    className="property__image-wrapper"
+  >
+    <img
+      alt="Photo studio"
+      className="property__image"
+      src="5"
+    />
+  </div>
+  <div
+    className="property__image-wrapper"
+  >
+    <img
+      alt="Photo studio"
+      className="property__image"
+      src="6"
+    />
+  </div>
+</div>
+`;

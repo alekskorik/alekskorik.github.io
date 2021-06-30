@@ -25,9 +25,9 @@ describe(`Test e2e for value component`, () => {
     onClickActiveCard = {clickHandler}/>);
 
 
-  it(`Click on link - 'Head in Card'`, () => {
-    const imageCard = app.find(`.place-card__image`);
-    imageCard.simulate(`click`);
+  it(`Hover on Article - 'Head in Card'`, () => {
+    const article = app.find(`.cities__place-card`);
+    article.simulate(`mouseenter`);
 
     expect(clickHandler).toHaveBeenCalledTimes(1);
     expect(clickHandler).toHaveBeenCalledWith(mock[0].id);

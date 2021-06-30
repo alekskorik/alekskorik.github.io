@@ -8,13 +8,11 @@ import {Operation} from '../../reducers/data/data.js';
 import {Link} from 'react-router-dom';
 import {AppRoute} from "../../const";
 import FavoriteList from './favorite-list.jsx';
-import FavoriteEmpty from './favorite-empty.jsx';
 import Header from '../../components/header/header.jsx';
 
 class Favorite extends React.PureComponent {
   constructor(props) {
     super(props);
-    console.log(this.props);
   }
   componentDidMount() {
     this.props.loadFavorite();

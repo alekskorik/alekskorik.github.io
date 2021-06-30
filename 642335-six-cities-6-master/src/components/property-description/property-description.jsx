@@ -4,7 +4,6 @@ import Rating from '../rating/rating.jsx';
 import FavoriteButton from '../../components/favorite-button/favorite-button.jsx';
 
 const PropertyDescription = ({offer}) => {
-  console.log(offer.host);
   return <React.Fragment>
     {offer.isPremium ?
       <div className="property__mark">

@@ -10,7 +10,6 @@ export default class PlacesList extends PureComponent {
 
   render() {
     const {offers, onActiveItemChange} = this.props;
-    console.log(onActiveItemChange);
     return (
       <React.Fragment>
         <div className="cities__places-list places__list tabs__content">
